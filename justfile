@@ -2,7 +2,7 @@ serve: lint clean
     yarn parcel serve
 
 build: lint clean
-    yarn parcel build
+    yarn parcel build --public-url ./
 
 lint:
 	yarn stylelint --fix *.scss
