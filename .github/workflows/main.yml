@@ -3,9 +3,17 @@ jobs:
   render-pdf:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v4
+    - name: Use Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.x'
+    - name: Install dependencies
+      run: yarn --frozen-lockfile
+    - name: Build project
+      run: yarn parcel build --public-url ./
     - name: HTML to PDF
       uses: fifsky/html-to-pdf-action@v0.1.0
       with:
         htmlFile: "./index.html"
-        outputFile: "./resume.pdf"
-  
+        outputFile: "./resume.pdf"  
